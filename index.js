@@ -47,7 +47,7 @@ bot.on("message", function (message) {
         message.member.voiceChannel.join()
         .then (connection => {
         bot.user.setPresence(({ game: { name: "Africa by Toto", type: 2}}))
-        const stream = message.guild.voiceConnection.playStream("toto africa/toto africa.wav")
+        const stream = message.guild.voiceConnection.playStream("toto africa/toto africa.mp3")
         .once('end', () => totoafrica());
         
         if (message.content === "/toto") {
@@ -57,7 +57,7 @@ bot.on("message", function (message) {
           return;
         }}
         function totoafrica() {
-        const stream = connection.playStream("toto africa/toto africa.wav")
+        const stream = connection.playStream("toto africa/toto africa.mp3")
         .once('end', () => totoafrica());
         }
         })
