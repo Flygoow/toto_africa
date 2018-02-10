@@ -46,7 +46,7 @@ bot.on("message", function (message) {
         if (message.member.voiceChannel) {
         message.member.voiceChannel.join()
         .then (connection => {
-        bot.user.setPresence(({ game: { name: "Africa by Toto", type: 2}}))
+        bot.user.setPresence(({ game: { name: "Africa by Toto - ADMIN: TYPE /toto", type: 2}}))
         const stream = message.guild.voiceConnection.playStream("toto africa/toto africa.mp3")
         .once('end', () => totoafrica());
         
