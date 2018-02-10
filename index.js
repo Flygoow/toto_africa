@@ -19,7 +19,7 @@ bot.on('ready', function() {
     console.log("toto https://discordapp.com/oauth2/authorize?client_id=411229619761577994&scope=bot&permissions=104324160")},
 
 bot.on('ready',() => {
-  bot.user.setPresence(({ game: { name: "Africa by Toto -- ADMIN: TYPE /toto", type: 1}}));
+  bot.user.setPresence(({ game: { name: "Africa by Toto -- ADMIN: TYPE /toto", type: 3}}));
 })),
 
 bot.on("message", function (message) {
