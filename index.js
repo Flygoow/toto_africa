@@ -35,25 +35,32 @@ bot.on("message", function (message) {
   switch (args[0]) {
   //toto
       case "toto":
+  //toto
+      case "toto":
         if (!message.member.voiceChannel) {
         return;
         }
 
-        if (!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) {
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
         return false; 
         }
+        
+        if (message.guild.voiceConnection) {return;}
 
-        if (message.member.voiceChannel) {
+        if (message.member.voiceChannel) 
+        { 
+          if (!message.member.hasPermission("ADMINISTRATOR")) {message.channel.reply("You are not the administrator of this server.")}
+          if (message.member.hasPermission("ADMINISTRATOR")) {
         message.member.voiceChannel.join()
         .then (connection => {
         const stream = message.guild.voiceConnection.playStream("toto africa/toto africa.mp3")
         .once('end', () => totoafrica());
-        
+
         if (message.content === "/toto") {
-          if (!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) {
-          message.author.sendMessage("Nice try. You will never change the vocal channel of Toto - Africa. Except if you are the admin of this server.")}
-          if (message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) {
-          return;
+          if (!message.member.hasPermission("ADMINISTRATOR")) {
+          message.channel.reply("You are not the administrator of this server.")}
+          if (message.member.hasPermission("ADMINISTRATOR")) {
+          message.channel.reply("You can't do that again.")
         }}
         function totoafrica() {
         const stream = connection.playStream("toto africa/toto africa.mp3")
@@ -62,10 +69,35 @@ bot.on("message", function (message) {
         })
       } else {
       return;
-      }
+      }}
       break;
+
+        //STOP
+    case "stop":
+        var server = servers[message.guild.id];
+        if (!message.guild.member(bot.user).permissions.has("ADMINISTRATOR")) {
+        message.delete(10000)
+        }
+
+        if (message.guild.member(bot.user).permissions.has("ADMINISTRATOR")) {
+        message.delete(10000)
+        }
+        break;
+
+    case "leave":
+        var server = servers[message.guild.id];
+        if (!message.guild.member(bot.user).permissions.has("ADMINISTRATOR")) {
+        message.delete(10000)
+        }
+
+        if (message.guild.member(bot.user).permissions.has("ADMINISTRATOR")) {
+        message.delete(10000)
+        }
+        break;
+
     }
 
+    
 });
 
 bot.login(process.env.BOT_TOKEN);
