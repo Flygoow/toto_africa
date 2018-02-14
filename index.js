@@ -35,8 +35,6 @@ bot.on("message", function (message) {
   switch (args[0]) {
   //toto
       case "toto":
-  //toto
-      case "toto":
         if (!message.member.voiceChannel) {
         return;
         }
