@@ -25,9 +25,6 @@ bot.on('ready',() => {
 bot.on("message", function (message) {
   if (message.author.equals(bot.user)) return;
   if (!message.content.startsWith(prefix)) return;
-  if (message.content.startsWith(prefix)) {
-     message.delete(100)
-  }
 
   var args = message.content.substring(prefix.length).split(" ")
 
